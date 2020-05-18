@@ -1,0 +1,1477 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>lrj</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/highlight.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+	
+<body>
+  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="懒人家APP接口说明文档">懒人家APP接口说明文档</h1>
+<h2>更新记录</h2>
+<h2>1 登录</h2>
+<h3>1.1 一键登录</h3>
+<ul>
+<li>请求地址：/toOauthLogin</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">prikey</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>登录凭证</td>
+</tr>
+</tbody>
+</table>
+<h3>1.2 微信第三方登录</h3>
+<h4>1.2.1 获取凭证</h4>
+<ul>
+<li>请求地址：/toGetAccessToken</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">appid</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>*</td>
+</tr>
+<tr>
+	<td align="left">secret</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>*</td>
+</tr>
+<tr>
+	<td align="left">code</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>*</td>
+</tr>
+</tbody>
+</table>
+<h4>1.2.2 获取验证码</h4>
+<ul>
+<li>请求地址：/toGetCaptcha</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userPhone</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户手机号</td>
+</tr>
+</tbody>
+</table>
+<h4>1.2.3 绑定用户手机号</h4>
+<ul>
+<li>请求地址：/toBindPhoneNumber</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userPhone</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户手机号</td>
+</tr>
+<tr>
+	<td align="left">jsonWxUserInfo</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>*</td>
+</tr>
+<tr>
+	<td align="left">verificationCode</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>验证码</td>
+</tr>
+</tbody>
+</table>
+<h2>2 用户操作</h2>
+<h3>2.1 等级</h3>
+<ul>
+<li>请求地址：/getUserLevelInfo</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">null</td>
+	<td>用户Id</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>返回结果：</li>
+</ul>
+<p>```</p>
+<pre><code>{
+&quot;requestStatus&quot;: &quot;success&quot;,
+&quot;errorCode&quot;: 0,
+&quot;errorTip&quot;: &quot;查询成功！&quot;,
+&quot;data&quot;: null
+</code></pre>
+
+<p>}</p>
+<p>```</p>
+<h3>2.2 红包</h3>
+<ul>
+<li>请求地址：/getRedPacket</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">null</td>
+	<td>用户Id</td>
+</tr>
+</tbody>
+</table>
+<h3>2.3 账户</h3>
+<ul>
+<li>请求地址：/getResidueLimit/v3</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">null</td>
+	<td>用户Id</td>
+</tr>
+</tbody>
+</table>
+<h3>2.4 获取验证码</h3>
+<ul>
+<li>请求地址：/getVerificationCode</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userPhone</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户手机号</td>
+</tr>
+</tbody>
+</table>
+<h3>2.5 手机号+验证码注册</h3>
+<ul>
+<li>请求地址：/getVerificationCode</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userPhone</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户手机号</td>
+</tr>
+</tbody>
+</table>
+<h3>2.6 被邀请时注册</h3>
+<ul>
+<li>请求地址：/inviteRegister</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userPhone</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户手机号</td>
+</tr>
+<tr>
+	<td align="left">verificationCode</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>验证码</td>
+</tr>
+<tr>
+	<td align="left">inviteCode</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>邀请码</td>
+</tr>
+</tbody>
+</table>
+<h3>2.7 查询用户地址</h3>
+<ul>
+<li>请求地址：/getUserAddressList</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+</tbody>
+</table>
+<h3>2.8 添加用户地址</h3>
+<ul>
+<li>请求地址：/createConsignee</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">consignee</td>
+	<td align="center">Consignee</td>
+	<td align="center">是</td>
+	<td align="center">null</td>
+	<td>地址类型</td>
+</tr>
+</tbody>
+</table>
+<h2>3 商品</h2>
+<h3>3.1 衣物类别</h3>
+<ul>
+<li>请求地址：/getHouseService</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">pid</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>衣物一级栏目ID</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 衣物商品</h3>
+<ul>
+<li>请求地址：/getHouseService</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">categoryId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>衣物二级栏目ID</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 家政商品</h3>
+<ul>
+<li>请求地址：/getHouseService</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">pid</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>家政一级栏目ID</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 月卡商品</h3>
+<ul>
+<li>请求地址：/getMonthCardList</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">null</td>
+	<td align="center">null</td>
+	<td align="center">null</td>
+	<td align="center">0</td>
+	<td>null</td>
+</tr>
+</tbody>
+</table>
+<h2>4 订单</h2>
+<h3>4.1 下单：统一下单入口，分通道走不同订单创建</h3>
+<ul>
+<li>请求地址：/createOrder</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>单项洗衣：参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">totalPrice</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单金额：（元），精确到小数点后两位</td>
+</tr>
+<tr>
+	<td align="left">orderType</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单类型：1,单项洗衣 2,月卡 3,单项家政 4,定制家政</td>
+</tr>
+<tr>
+	<td align="left">takeTime</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>取衣时间</td>
+</tr>
+<tr>
+	<td align="left">takeConsigneeId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>取衣地址Id</td>
+</tr>
+<tr>
+	<td align="left">sendConsigneeId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>送衣地址Id</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>月卡购买：参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">totalPrice</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单金额：（元），精确到小数点后两位</td>
+</tr>
+<tr>
+	<td align="left">orderType</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单类型：1,单项洗衣 2,月卡 3,单项家政 4,定制家政</td>
+</tr>
+<tr>
+	<td align="left">monthCardId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>月卡Id</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>单项家政：参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">totalPrice</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单金额：（元），精确到小数点后两位</td>
+</tr>
+<tr>
+	<td align="left">orderType</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单类型：1,单项洗衣 2,月卡 3,单项家政 4,定制家政</td>
+</tr>
+<tr>
+	<td align="left">houseServiceId</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>家政服务Id</td>
+</tr>
+<tr>
+	<td align="left">takeConsigneeId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>服务地址Id</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>定制家政：参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">totalPrice</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单金额：（元），精确到小数点后两位</td>
+</tr>
+<tr>
+	<td align="left">orderType</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>订单类型：1,单项洗衣 2,月卡 3,单项家政 4,定制家政</td>
+</tr>
+<tr>
+	<td align="left">serviceCycle</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>取衣时间</td>
+</tr>
+<tr>
+	<td align="left">baseServiceCount</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>基础服务次数</td>
+</tr>
+<tr>
+	<td align="left">workTime</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>工作时长</td>
+</tr>
+<tr>
+	<td align="left">houseArea</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>住宅面积</td>
+</tr>
+<tr>
+	<td align="left">baseServicePrice</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>基础服务价格</td>
+</tr>
+</tbody>
+</table>
+<h3>4.2 查询订单</h3>
+<ul>
+<li>请求地址：/findUserOrder</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">null</td>
+	<td align="center">null</td>
+	<td align="center">null</td>
+	<td align="center">0</td>
+	<td>null</td>
+</tr>
+</tbody>
+</table>
+<h2>5 购物车</h2>
+<h3>5.1 获取购物车内容</h3>
+<ul>
+<li>请求地址：/getShoppingDetails</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 加入购物车</h3>
+<ul>
+<li>请求地址：/addShopping</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">itemId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>商品Id</td>
+</tr>
+<tr>
+	<td align="left">isPouch</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>是否袋洗 1：是 0：否</td>
+</tr>
+</tbody>
+</table>
+<h3>5.3 购物车商品数量+-</h3>
+<ul>
+<li>请求地址：/saveShoppingQuantity</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">itemId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>商品Id</td>
+</tr>
+<tr>
+	<td align="left">quantity</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>商品数量</td>
+</tr>
+</tbody>
+</table>
+<h3>5.4 购物车滑动删除</h3>
+<ul>
+<li>请求地址：/removeShoppingItem</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">shoppingId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>购物车列表Id</td>
+</tr>
+</tbody>
+</table>
+<h3>5.5 购物车清空</h3>
+<ul>
+<li>请求地址：/emptyShopCart</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+</tbody>
+</table>
+<h2>6 预约</h2>
+<h3>6.1 预约洗衣</h3>
+<ul>
+<li>请求地址：/createWashingAppoint</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">userName</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户名字</td>
+</tr>
+<tr>
+	<td align="left">takeConsigneeId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>取衣地址Id</td>
+</tr>
+<tr>
+	<td align="left">visitTime</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>上门取衣时间</td>
+</tr>
+<tr>
+	<td align="left">orderNumber</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>订单号</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 预约家政</h3>
+<ul>
+<li>请求地址：/createHouseServiceAppoint</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">userName</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户名字</td>
+</tr>
+<tr>
+	<td align="left">takeConsigneeId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>取衣地址Id</td>
+</tr>
+<tr>
+	<td align="left">visitTime</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>上门取衣时间</td>
+</tr>
+<tr>
+	<td align="left">orderNumber</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>订单号</td>
+</tr>
+</tbody>
+</table>
+<h2>7 支付</h2>
+<h3>7.1 选择支付</h3>
+<ul>
+<li>请求地址：/payForChoose</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>用户Id</td>
+</tr>
+<tr>
+	<td align="left">orderNumber</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>订单号</td>
+</tr>
+<tr>
+	<td align="left">isBalance</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">0</td>
+	<td>是否使用余额支付 0：不使用，1：使用</td>
+</tr>
+</tbody>
+</table>
+<h3>7.2 微信支付（方法，可扩展）</h3>
+<h3>7.3 支付宝支付（方法，可扩展）</h3>
+<h2>8 获取首页banner</h2>
+<ul>
+<li>请求地址：/getBannerList</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:否</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">null</td>
+	<td align="center">null</td>
+	<td align="center">null</td>
+	<td align="center">null</td>
+	<td>null</td>
+</tr>
+</tbody>
+</table>
+<h2>9 获取评论</h2>
+<ul>
+<li>请求地址：/listLatestOrderComment</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:否</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">null</td>
+	<td align="center">null</td>
+	<td align="center">null</td>
+	<td align="center">null</td>
+	<td>null</td>
+</tr>
+</tbody>
+</table>
+<h2>10 app版本控制</h2>
+<ul>
+<li>请求地址：/getApkVersion</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">userId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>用户Id</td>
+</tr>
+</tbody>
+</table>
+<h2>11 增值服务</h2>
+<ul>
+<li>请求地址：/listValueAddedServices</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">itemId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>商品Id</td>
+</tr>
+</tbody>
+</table>
+<h1>助手端接口使用说明</h1>
+<h2>1.订单列表</h2>
+<ul>
+<li>请求地址：/getStaffOrderList</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">reservationType</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>预约订单类型</td>
+</tr>
+</tbody>
+</table>
+<h2>2. 抢单</h2>
+<ul>
+<li>请求地址：/robOrder</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">staffId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">null</td>
+	<td>员工Id</td>
+</tr>
+<tr>
+	<td align="left">orderNumber</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>订单号</td>
+</tr>
+</tbody>
+</table>
+<h2>3.员工修改密码</h2>
+<ul>
+<li>请求地址：/updateStaffPassWord</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">staffId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">null</td>
+	<td>员工Id</td>
+</tr>
+<tr>
+	<td align="left">oldPassWord</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>原密码</td>
+</tr>
+<tr>
+	<td align="left">newPassWord</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>新密码</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 更改订单物流</h2>
+<ul>
+<li>请求地址：/updateStaffPassWord</li>
+<li>请求方式:HTTP/POST,HTTP/GET</li>
+<li>是否需要登录:是</li>
+<li>Auto:cwj  
+</li>
+<li>参数示例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+	<th align="left">参数名称</th>
+	<th align="center">类型</th>
+	<th align="center">是否必传</th>
+	<th align="center">默认值</th>
+	<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td align="left">staffId</td>
+	<td align="center">Integer</td>
+	<td align="center">是</td>
+	<td align="center">null</td>
+	<td>员工Id</td>
+</tr>
+<tr>
+	<td align="left">orderNumber</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>订单号</td>
+</tr>
+<tr>
+	<td align="left">traceStatus</td>
+	<td align="center">String</td>
+	<td align="center">是</td>
+	<td align="center">&quot;&quot;</td>
+	<td>物流状态</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
